@@ -1,6 +1,6 @@
 package impactoecologico;
 
-public class Bicicleta {
+public class Bicicleta implements ImpactoEcologico {
 
     private String marca;
     private String tipo;
@@ -42,4 +42,15 @@ public class Bicicleta {
         return "Bicicleta{" + "marca=" + marca + ", tipo=" + tipo + ", kmRecorridos=" + kmRecorridos + '}';
     }
 
+    //Para calcular el impacto se multiplica los kilometros recorridos
+    // por el valor de C02 que se genera, solo si la bicicleta es electrica.
+    @Override
+    public void obtenerImpactoEcologico() {
+        if (this.tipo.equalsIgnoreCase("Electrica")) {
+            System.out.println("EL CO2 generado por la bicicleta es: " + this.kmRecorridos * this.emisionC02 + " kg");
+        } else {
+            System.out.println("EL CO2 generado por la bicicleta es: 0 kg");
+        }
+
+    }
 }

@@ -1,6 +1,6 @@
 package impactoecologico;
 
-public class Edificio {
+public class Edificio implements ImpactoEcologico {
 
     private String numeroPisos;
     private String ubicacion;
@@ -59,4 +59,12 @@ public class Edificio {
         return "Edificio{" + "numeroPisos=" + numeroPisos + ", ubicacion=" + ubicacion + ", consumoElectricidad=" + consumoElectricidad + ", consumoGas=" + consumoGas + '}';
     }
 
+    //Se multiplica el consumo de energia y gas por sus valores correspondientes
+    // en generacion de co2, para la electricidad se calcula pr kwh y para el gas
+    // en metros cubicos. Luegos se procede a sumar los valores.
+    @Override
+    public void obtenerImpactoEcologico() {
+        double CO2kg = (this.consumoElectricidad * this.emisionElectricidadCO2) + (this.consumoGas * this.emisionGasCO2);
+        System.out.println("El CO2 Generado por el edificio es: " + CO2kg + " kg");
+    }
 }

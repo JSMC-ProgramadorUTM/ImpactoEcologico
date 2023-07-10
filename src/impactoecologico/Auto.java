@@ -1,6 +1,6 @@
 package impactoecologico;
 
-public class Auto {
+public class Auto implements ImpactoEcologico {
 
     private String marca;//Marca del auto
     private String modelo;//Modelo del auto
@@ -61,5 +61,22 @@ public class Auto {
     @Override
     public String toString() {
         return "Auto{" + "marca=" + marca + ", modelo=" + modelo + ", anio=" + anio + ", tipoCombustible=" + tipoCombustible + ", kmRecorridos=" + kmRecorridos + '}';
+    }
+
+    // Para calcular el impacto se multiplica los kilometrso recorridos del auto
+    // por el valor C02Kg que genera 1 kilometro, dependiendo si el auto es de tipo
+    // diesel o gasolina
+    @Override
+    public void obtenerImpactoEcologico() {
+        if (this.tipoCombustible.equalsIgnoreCase("DIESEL")) {
+            double CO2kg = this.kmRecorridos * this.emisionC02Diesel;
+            System.out.println("El CO2 generado por el auto es: " + CO2kg + " kg");
+        }
+
+        if (this.tipoCombustible.equalsIgnoreCase("GASOLINA")) {
+            double CO2kg = this.kmRecorridos * this.emisionC02Gasolina;
+            System.out.println("El CO2 generado por el auto es: " + CO2kg + " kg");
+        }
+
     }
 }
