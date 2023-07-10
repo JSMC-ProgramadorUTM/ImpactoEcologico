@@ -1,4 +1,3 @@
-
 package impactoecologico;
 
 public class Main {
